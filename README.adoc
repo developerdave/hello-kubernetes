@@ -1,0 +1,5 @@
+Example Kubernetes, Jib and SpringBoot deployment. Uses minikube to keep the deployment as
+simple as possible.
+
+When up and running run `minikube service web-service --url` to see the exposed service url and then hit
+the returned url with `/greeting` on the end. For example `http://192.168.99.100:30001/greeting`
