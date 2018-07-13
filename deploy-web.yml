@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-deploy
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: web-app
+        zone: dev
+        version: v1
+    spec:
+      containers:
+        - name: web-pod
+          image: quay.io/kubernetes/hello-web:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort:  8080
